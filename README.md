@@ -1,2 +1,2 @@
 # react-crud-app-2
-Mini CRUD app project
+Mini CRUD app project - Dog Adoption
