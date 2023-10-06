@@ -16,7 +16,7 @@ export default function User({ uid }) {
   }, [uid]);
 
   return (
-    <div>
+    <div className="avatar">
       <img src={user?.image} />
       <span>
         <h3>{user?.name}</h3>
