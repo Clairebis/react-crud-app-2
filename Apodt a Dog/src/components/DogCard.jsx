@@ -1,6 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import User from "./User";
 
 export default function DogCard({ dog }) {
+  const navigate = useNavigate;
+
+  function updateClick() {
+    navigate(`/dogs/${dog.id}/update`);
+  }
+
+  function readMoreClick() {
+    navigate(`/dogs/${dog.id}`);
+  }
+
   return (
     <article key={dog.id}>
       <User uid={dog.uid} />
@@ -9,6 +20,12 @@ export default function DogCard({ dog }) {
       <p>{dog.breed}</p>
       <p>{dog.age}</p>
       <p>{dog.status}</p>
+      <button key={dog.id} onClick={readMoreClick}>
+        Read More
+      </button>
+      <button key={dog.id} onClick={updateClick}>
+        Update
+      </button>
     </article>
   );
 }

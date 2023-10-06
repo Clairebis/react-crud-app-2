@@ -55,10 +55,60 @@ export default function NewDog() {
         <label>Name</label>
         <input
           type="text"
-          placeholder="Enter the dog's name"
+          placeholder="Dog's name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        <label>Breed</label>
+        <input
+          type="text"
+          placeholder="Dog's breed"
+          value={breed}
+          onChange={(e) => setBreed(e.target.value)}
+        />
+        <label>Age</label>
+        <input
+          type="text"
+          placeholder="Dog's age"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        />
+        <label>Description</label>
+        <textarea
+          type="text"
+          placeholder="Information about the dog, e.g. personality, likes, dislikes, etc."
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <label>Image</label>
+        <input
+          type="url"
+          placeholder="Paste image url"
+          value={image}
+          onChange={(e) => setImage(e.target.value)}
+        />
+        {image ? (
+          <img src={image} alt="Image preview" />
+        ) : (
+          <img src={placeholderImage} alt="PLaceholder Image" />
+        )}
+
+        <label>Contact</label>
+        <input
+          type="text"
+          placeholder="Contact info"
+          value={contact}
+          onChange={(e) => setContact(e.target.value)}
+        />
+        <label>Status</label>
+        <input
+          type="text"
+          placeholder="e.g. Available / Adopted"
+          value={status}
+          onChange={(e) => setStatus(e.target.value)}
+        />
+
+        <button type="submit">Add dog</button>
       </form>
     </section>
   );
