@@ -13,17 +13,17 @@ export default function DogCard({ dog }) {
   }
 
   return (
-    <article key={dog.id}>
+    <article>
       <User uid={dog.uid} />
       <img src={dog.image} alt={dog.name} />
       <h3>{dog.name}</h3>
       <p>{dog.breed}</p>
       <p>{dog.age}</p>
       <p>{dog.status}</p>
-      <button key={dog.id} onClick={readMoreClick} type="submit">
+      <button onClick={readMoreClick} type="submit">
         Read More
       </button>
-      <button key={dog.id} onClick={updateClick} type="submit">
+      <button onClick={updateClick} type="submit">
         Update
       </button>
     </article>
