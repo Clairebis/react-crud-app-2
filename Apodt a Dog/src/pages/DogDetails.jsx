@@ -31,9 +31,8 @@ export default function DogDetails() {
   return (
     <>
       <section className="page">
-        <h1>Read all about {dog.name}</h1>
+        <h1>All about {dog.name}</h1>
         <article>
-          <User uid={dog.uid} />
           <img src={dog.image} alt={dog.name} className="image-preview" />
           <h3>{dog.name}</h3>
           <p>{dog.breed}</p>
