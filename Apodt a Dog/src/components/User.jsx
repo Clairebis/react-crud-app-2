@@ -4,7 +4,7 @@ export default function User({ uid }) {
   const [user, setUser] = useState({});
   useEffect(() => {
     async function getUser() {
-      const url = `https://dog-app-7792f-default-rtdb.europe-west1.firebasedatabase.app/users`;
+      const url = `https://dog-app-7792f-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`;
       console.log(url);
       const response = await fetch(url);
       const data = await response.json();
