@@ -4,7 +4,7 @@ export default function Nav() {
   return (
     <nav>
       <NavLink to="/">HOME</NavLink>
-      <NavLink to="/add">ADD</NavLink>
+      <NavLink to="/add">ADD A DOG</NavLink>
     </nav>
   );
 }

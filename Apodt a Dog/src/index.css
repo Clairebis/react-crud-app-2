@@ -3,20 +3,42 @@
   line-height: 1.5;
   font-weight: 400;
 
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (min-width: 600px) {
+  nav {
+    padding: 1em 2em;
+  }
+}
+
+/* Style the links inside the navigation bar */
+nav a {
+  color: var(--text-color-light);
+  text-align: center;
+  padding: 20px 16px;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  font-weight: 500;
+  font-size: 1.2em;
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+
   text-decoration: inherit;
 }
 a:hover {
