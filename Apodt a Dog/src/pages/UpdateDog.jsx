@@ -47,7 +47,7 @@ export default function UpdateDog() {
   }
 
   return (
-    <section>
+    <section className="page">
       <h1>Update details for {dog.name}</h1>
       <form onSubmit={updateDog}>
         <label>Name</label>
@@ -81,9 +81,13 @@ export default function UpdateDog() {
           onChange={(e) => setDog({ ...dog, image: e.target.value })}
         />
         {dog.image ? (
-          <img src={dog.image} alt="Image preview" />
+          <img src={dog.image} alt="Image preview" className="image-preview" />
         ) : (
-          <img src={placeholderImage} alt="PLaceholder Image" />
+          <img
+            src={placeholderImage}
+            alt="PLaceholder Image"
+            className="image-preview"
+          />
         )}
 
         <label>Contact</label>

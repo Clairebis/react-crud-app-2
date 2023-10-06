@@ -24,9 +24,9 @@ export default function DogList() {
   }, []);
 
   return (
-    <section>
+    <section className="page">
       <h1>Adopt a Dog</h1>
-      <section>
+      <section className="grid">
         {dogs.map((dog) => (
           <DogCard dog={dog} key={dog.id} />
         ))}

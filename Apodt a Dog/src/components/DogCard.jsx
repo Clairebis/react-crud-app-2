@@ -15,17 +15,21 @@ export default function DogCard({ dog }) {
   return (
     <article>
       <User uid={dog.uid} />
-      <img src={dog.image} alt={dog.name} />
-      <h3>{dog.name}</h3>
-      <p>{dog.breed}</p>
-      <p>{dog.age}</p>
-      <p>{dog.status}</p>
-      <button onClick={readMoreClick} type="submit">
-        Read More
-      </button>
-      <button onClick={updateClick} type="submit">
-        Update
-      </button>
+      <img src={dog.image} alt={dog.name} className="image-preview" />
+      <div className="lowerCard">
+        <h3>{dog.name}</h3>
+        <p>{dog.breed}</p>
+        <p>{dog.age}</p>
+        <p>{dog.status}</p>
+        <div className="btn-container">
+          <button onClick={updateClick} type="submit">
+            Update
+          </button>
+          <button onClick={readMoreClick} type="submit">
+            Read More
+          </button>
+        </div>
+      </div>
     </article>
   );
 }

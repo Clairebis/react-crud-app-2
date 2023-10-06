@@ -49,7 +49,7 @@ export default function NewDog() {
   }
 
   return (
-    <section>
+    <section className="page">
       <h1>Add a Dog</h1>
       <form onSubmit={createDog}>
         <label>Name</label>
@@ -88,9 +88,13 @@ export default function NewDog() {
           onChange={(e) => setImage(e.target.value)}
         />
         {image ? (
-          <img src={image} alt="Image preview" />
+          <img src={image} alt="Image preview" className="image-preview" />
         ) : (
-          <img src={placeholderImage} alt="PLaceholder Image" />
+          <img
+            src={placeholderImage}
+            alt="PLaceholder Image"
+            className="image-preview"
+          />
         )}
 
         <label>Contact</label>
