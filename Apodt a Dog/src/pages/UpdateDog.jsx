@@ -69,7 +69,7 @@ export default function UpdateDog() {
           onChange={(e) => setDog({ ...dog, age: e.target.value })}
         />
         <label>Description</label>
-        <input
+        <textarea
           type="text"
           value={dog.description}
           onChange={(e) => setDog({ ...dog, description: e.target.value })}
@@ -85,6 +85,23 @@ export default function UpdateDog() {
         ) : (
           <img src={placeholderImage} alt="PLaceholder Image" />
         )}
+
+        <label>Contact</label>
+        <input
+          type="text"
+          value={dog.contact}
+          onChange={(e) => setDog({ ...dog, contact: e.target.value })}
+        />
+        <label>Status</label>
+
+        <select
+          value={dog.status}
+          onChange={(e) => setDog({ ...dog, status: e.target.value })}
+        >
+          <option value="Available">Available</option>
+          <option value="Adopted">Adopted</option>
+        </select>
+
         <button type="submit">Update</button>
       </form>
     </section>

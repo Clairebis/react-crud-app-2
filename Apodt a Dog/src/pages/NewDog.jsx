@@ -101,14 +101,12 @@ export default function NewDog() {
           onChange={(e) => setContact(e.target.value)}
         />
         <label>Status</label>
-        <input
-          type="text"
-          placeholder="e.g. Available / Adopted"
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-        />
+        <select onChange={(e) => setStatus(e.target.value)}>
+          <option value="Available">Available</option>
+          <option value="Adopted">Adopted</option>
+        </select>
 
-        <button type="submit">Add dog</button>
+        <button type="submit">Add</button>
       </form>
     </section>
   );
