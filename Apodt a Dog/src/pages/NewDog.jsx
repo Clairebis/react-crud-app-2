@@ -7,29 +7,62 @@ export default function NewDog() {
   const [age, setAge] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+  const [imageFile, setImageFile] = useState("");
   const [contact, setContact] = useState("");
   const [status, setStatus] = useState("");
-
-  const newDog = {
-    name: name,
-    breed: breed,
-    age: age,
-    description: description,
-    image: image,
-    contact: contact,
-    status: status,
-    uid: "fTs84KRoYw5pRZEWCq2Z",
-  };
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
   const placeholderImage =
     "https://archive.org/download/placeholder-image/placeholder-image.jpg";
 
-  console.log(newDog);
+  /*handleImageChange is called when the user selects a file. It reads the file and sets the imageFile state to the file. The imageFile state is used to display a preview of the image.*/
+  function handleImageChange(event) {
+    const file = event.target.files[0];
+    if (file.size < 500000) {
+      //image file size must be less than 0.5MB
+      setImageFile(file);
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setImage(event.target.result);
+      };
+      reader.readAsDataURL(file);
+      setErrorMessage(""); // reset errorMessage state
+    } else {
+      setErrorMessage("Image file size must be less than 0.5MB");
+    }
+  }
+
+  async function uploadImage() {
+    //url to new image - make sure to have the correct firebase project id
+    const url = `https://firebasestorage.googleapis.com/v0/b/dog-app-7792f.appspot.com/o/${imageFile.name}`;
+    //POST request to upload image
+    const response = await fetch(url, {
+      method: "POST",
+      body: imageFile,
+      headers: { "Content-Type": imageFile.type },
+    });
+    const data = await response.json();
+    console.log(data); // data response from image upload
+    const imageUrl = `${url}?alt=media`;
+    return imageUrl;
+  }
 
   async function createDog(event) {
     event.preventDefault();
+    const imageUrl = await uploadImage();
+
+    const newDog = {
+      name: name,
+      breed: breed,
+      age: age,
+      description: description,
+      image: imageUrl,
+      contact: contact,
+      status: status,
+      uid: "fTs84KRoYw5pRZEWCq2Z",
+    };
 
     newDog.uid = "fTs84KRoYw5pRZEWCq2Z";
 
@@ -46,6 +79,7 @@ export default function NewDog() {
     } else {
       console.log("An error occurred when adding the dog");
     }
+    console.log(newDog);
   }
 
   return (
@@ -81,18 +115,14 @@ export default function NewDog() {
           onChange={(e) => setDescription(e.target.value)}
         />
         <label>Image</label>
-        <input
-          type="url"
-          placeholder="Paste image url"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-        />
+        <input type="file" accept="image/*" onChange={handleImageChange} />
+        <p className="text-error">{errorMessage}</p>
         {image ? (
           <img src={image} alt="Image preview" className="image-preview" />
         ) : (
           <img
             src={placeholderImage}
-            alt="PLaceholder Image"
+            alt="Placeholder Image"
             className="image-preview"
           />
         )}
