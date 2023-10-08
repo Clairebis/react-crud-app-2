@@ -13,7 +13,7 @@ export default function DogCard({ dog }) {
   }
 
   return (
-    <article>
+    <article className="card">
       <User uid={dog.uid} />
       <img src={dog.image} alt={dog.name} className="image-preview" />
       <div className="lowerCard">

@@ -20,7 +20,6 @@ export default function User({ uid }) {
       <img src={user?.image} />
       <span>
         <h3>{user?.name}</h3>
-        <h3>{user?.title}</h3>
       </span>
     </div>
   );

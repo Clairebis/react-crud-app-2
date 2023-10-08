@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import User from "../components/User";
+
 import { useEffect, useState } from "react";
 
 export default function DogDetails() {

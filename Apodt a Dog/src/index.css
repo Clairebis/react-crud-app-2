@@ -157,7 +157,7 @@ section.page {
 .grid > article {
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
   padding: 1.5em;
-  background-color: var(--white);
+
   transition: 0.5s;
   animation: fadeIn 0.5s;
   cursor: pointer;
@@ -184,9 +184,10 @@ form {
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
   text-align: center;
   padding: 1em 1em 2em;
-  background-color: var(--white);
+  background-color: #f1f1f1;
   max-width: 380px;
   animation: fadeIn 0.5s;
+  color: #666666;
 }
 
 form button {
@@ -203,8 +204,28 @@ input {
   padding: 1em;
   box-sizing: border-box;
   display: block;
-  background: var(--white);
-  border: solid 2px var(--green);
+  background: #f1f1f1;
+  border: solid 2px #666666;
+  color: #666666;
+}
+
+textarea {
+  min-height: 200px;
+  margin: 0.5em auto 1em;
+  width: 100%;
+  max-width: 350px;
+  padding: 1em;
+  background: #f1f1f1;
+  border: solid 2px #666666;
+  box-sizing: border-box;
+  display: block;
+  color: #666666;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #666666 !important; /* Change this to the desired color */
 }
 
 .image-preview {
@@ -215,8 +236,16 @@ input {
   margin: 0.5em auto;
   display: block;
   cursor: pointer;
-  border: solid 2px var(--green);
+  border: solid 2px #666666;
   margin-top: 30px;
+}
+
+select {
+  padding: 10px;
+  margin-left: 10px;
+  margin-bottom: 2em;
+
+  border-radius: 8px;
 }
 
 .btn-container {
@@ -237,4 +266,8 @@ input {
 h3,
 p {
   margin: 0;
+}
+
+.card {
+  background-color: #666666 !important;
 }
