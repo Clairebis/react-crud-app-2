@@ -3,6 +3,7 @@ import DogCard from "../components/DogCard";
 
 export default function DogList() {
   const [dogs, setDogs] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     async function getDogs() {
@@ -13,7 +14,7 @@ export default function DogList() {
       const dogsArray = Object.keys(data).map((key) => ({
         id: key,
         ...data[key],
-      }));
+      })); // object to array of objects
 
       console.log(data);
       console.log(dogsArray);
@@ -23,11 +24,31 @@ export default function DogList() {
     getDogs();
   }, []);
 
+  let dogsToDisplay = [...dogs];
+
+  if (searchValue) {
+    dogsToDisplay = dogsToDisplay.filter(
+      (dog) =>
+        dog.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+        dog.breed.toLowerCase().includes(searchValue.toLowerCase()) ||
+        dog.status.toLowerCase().includes(searchValue.toLowerCase()) ||
+        dog.age.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  }
+
   return (
     <section className="page">
       <h1>Adopt a Dog</h1>
+      <section className="filters-pane">
+        <input
+          type="text"
+          placeholder="Search"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value.toLowerCase())}
+        />
+      </section>
       <section className="grid">
-        {dogs.map((dog) => (
+        {dogsToDisplay.map((dog) => (
           <DogCard dog={dog} key={dog.id} />
         ))}
       </section>
