@@ -29,10 +29,10 @@ export default function DogList() {
   if (searchValue) {
     dogsToDisplay = dogsToDisplay.filter(
       (dog) =>
-        dog.name.toLowerCase().includes(searchValue.toLowerCase()) ||
-        dog.breed.toLowerCase().includes(searchValue.toLowerCase()) ||
-        dog.status.toLowerCase().includes(searchValue.toLowerCase()) ||
-        dog.age.toLowerCase().includes(searchValue.toLowerCase())
+        dog.name.toLowerCase().includes(searchValue) ||
+        dog.breed.toLowerCase().includes(searchValue) ||
+        dog.status.toLowerCase().includes(searchValue) ||
+        dog.age.toLowerCase().includes(searchValue)
     );
   }
 
