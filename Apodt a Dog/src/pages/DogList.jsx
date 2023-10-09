@@ -4,6 +4,7 @@ import DogCard from "../components/DogCard";
 export default function DogList() {
   const [dogs, setDogs] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [sortBy, setSortBy] = useState("age");
 
   useEffect(() => {
     async function getDogs() {
@@ -36,10 +37,27 @@ export default function DogList() {
     );
   }
 
+  dogsToDisplay.sort((dog1, dog2) => {
+    console.log(sortBy);
+    if (sortBy === "name") {
+      return dog1[sortBy].localeCompare(dog2[sortBy]);
+    } else if (sortBy === "status") {
+      return dog1[sortBy] - dog2[sortBy];
+    }
+  });
+
   return (
     <section className="page">
       <h1>Adopt a Dog</h1>
       <section className="filters-pane">
+        <label>
+          Sort by
+          <select onChange={(e) => setSortBy(e.target.value)}>
+            <option value="name">Name</option>
+            <option value="status">Status</option>
+          </select>
+        </label>
+
         <input
           type="text"
           placeholder="Search"
