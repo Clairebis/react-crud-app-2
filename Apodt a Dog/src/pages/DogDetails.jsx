@@ -42,7 +42,6 @@ export default function DogDetails() {
           <p>{dog.contact}</p>
           <button onClick={() => navigate(-1)}>Back to overview</button>
         </article>
-        /{" "}
       </section>
     </>
   );

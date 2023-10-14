@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import DogCard from "../components/DogCard";
 
+//Functional component that displays a list of dogs
 export default function DogList() {
+  //useState hook to create 3 state variables
   const [dogs, setDogs] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [sortBy, setSortBy] = useState("age");
 
+  //useEffect hook to fetch the list of dogs (from firebase)
   useEffect(() => {
     async function getDogs() {
       const url =
@@ -19,14 +22,16 @@ export default function DogList() {
 
       console.log(data);
       console.log(dogsArray);
-      setDogs(dogsArray);
+      setDogs(dogsArray); // data stored in the dogs variable "setDogs"
     }
 
     getDogs();
   }, []);
 
-  let dogsToDisplay = [...dogs];
+  let dogsToDisplay = [...dogs]; // copy of the dogs array
 
+  //filter the dogs based on the searchValue input by the user
+  //does the searchValue match any of the dog properties?
   if (searchValue) {
     dogsToDisplay = dogsToDisplay.filter(
       (dog) =>
@@ -37,12 +42,13 @@ export default function DogList() {
     );
   }
 
+  //sort the dogs based on the sortBy value selected by the user - name or breed
   dogsToDisplay.sort((dog1, dog2) => {
     console.log(sortBy);
     if (sortBy === "name") {
       return dog1[sortBy].localeCompare(dog2[sortBy]);
-    } else if (sortBy === "status") {
-      return dog1[sortBy] - dog2[sortBy];
+    } else if (sortBy === "breed") {
+      return dog1[sortBy].localeCompare(dog2[sortBy]);
     }
   });
 
@@ -53,8 +59,9 @@ export default function DogList() {
         <label>
           Sort by
           <select onChange={(e) => setSortBy(e.target.value)}>
+            {/*onChange event handler to set the sortBy state variable*/}
             <option value="name">Name</option>
-            <option value="status">Status</option>
+            <option value="breed">Breed</option>
           </select>
         </label>
 
@@ -64,6 +71,7 @@ export default function DogList() {
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value.toLowerCase())}
         />
+        {/*onChange event handler to set the searchBy state variable*/}
       </section>
       <section className="grid">
         {dogsToDisplay.map((dog) => (
